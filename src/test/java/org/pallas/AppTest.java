@@ -1,4 +1,4 @@
-package org.example;
+package org.pallas;
 
 import org.junit.Test;
 
