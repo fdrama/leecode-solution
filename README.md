@@ -1,3 +1,3 @@
-# parrot
+# leet code
 
 LeetCode solution
