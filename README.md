@@ -1,3 +1,1 @@
 # leet code
-
-LeetCode solution
