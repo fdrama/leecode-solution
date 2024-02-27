@@ -22,15 +22,30 @@ public class Calculator {
         char[] tokens = infixExpression.toCharArray();
         for (int i = 0; i < tokens.length; i++) {
             char token = tokens[i];
+            if (Character.isWhitespace(token)) {
+                continue;
+            }
             if (Character.isDigit(token) || token == '.') {
                 StringBuilder number = new StringBuilder();
                 while (i < tokens.length && (Character.isDigit(tokens[i]) || tokens[i] == '.')) {
                     number.append(tokens[i]);
                     i++;
                 }
-                i--; // Move back one character to handle next token correctly
+                // 回退一个字符以处理下一个字符
+                i--;
                 // 正确地将数字作为一个整体添加到RPN表达式中
                 rpn.addLast(number.toString());
+            } else if (token == '-') {
+                // 处理负号
+                if (i == 0 || tokens[i - 1] == '(') {
+                    rpn.addLast("0");
+                    stack.push(token);
+                } else {
+                    while (!stack.isEmpty() && stack.peek() != '(' && precedence.get(token) <= precedence.getOrDefault(stack.peek(), 0)) {
+                        rpn.addLast(String.valueOf(stack.pop()));
+                    }
+                    stack.push(token);
+                }
             } else if (token == '(') {
                 stack.push(token);
             } else if (token == ')') {
