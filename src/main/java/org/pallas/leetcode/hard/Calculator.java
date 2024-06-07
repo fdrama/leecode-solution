@@ -106,12 +106,4 @@ public class Calculator {
         }
         return stack.pop();
     }
-
-    public static void main(String[] args) {
-        String infixExpression = "3 + (4 * 5) / 2 - 6";
-        String[] rpn = infixToRPN(infixExpression);
-        System.out.println("RPN: " + Arrays.toString(rpn));
-        BigDecimal result = evalRPN(rpn);
-        System.out.println("Result: " + result);
-    }
 }

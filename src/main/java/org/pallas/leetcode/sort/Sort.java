@@ -1,4 +1,4 @@
-package org.pallas.leetcode.hard;
+package org.pallas.leetcode.sort;
 
 public class Sort {
 
